@@ -4,7 +4,7 @@ http://emudevs.com
 
 TrinityCore Mists Of Pandaria 5.3.0
 
-You can login successfully, but you cannot go to the character creation screen just yet. 
+You can login successfully; however, it only stops at Retrieving Character List as of commit 66daa4f826d846eb42e3cd371d9064238232b2b6. 
 
 There's also a lot of disabled dbc files that are being updated to the current patch, so many features will not be available. Please bare with us while it is in development! Any contributions are welcomed to get us into that character creation screen and into the world!
 
