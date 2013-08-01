@@ -1634,9 +1634,9 @@ struct ScalingStatValuesEntry
     uint32 Level;                                           // 1
     uint32 dpsMod[6];                                       // 2-7 DPS mod for level
     uint32 Spellpower;                                      // 8 spell power for level
-    uint32 StatMultiplier[5];                               // 9-13 Multiplier for ScalingStatDistribution
+    uint32 StatMultiplier[6];                               // 9-14 Multiplier for ScalingStatDistribution
     uint32 Armor[8][4];                                     // 14-46 Armor for level
-    uint32 CloakArmor;                                      // 47 armor for cloak
+    uint32 CloakArmor;                                      // 48 armor for cloak
 
     uint32 GetStatMultiplier(uint32 inventoryType) const;
     uint32 GetArmor(uint32 inventoryType, uint32 armorType) const;
@@ -1757,24 +1757,28 @@ struct SpellEffectEntry
 struct SpellAuraOptionsEntry
 {
     uint32    Id;                                           // 0       m_ID
-    uint32    StackAmount;                                  // 1       m_cumulativeAura
-    uint32    procChance;                                   // 2       m_procChance
-    uint32    procCharges;                                  // 3       m_procCharges
-    uint32    procFlags;                                    // 4       m_procTypeMask
+    uint32    SpellId;                                      // 1       5.3.0
+    //uint32  unk;                                          // 2       5.3.0
+    uint32    StackAmount;                                  // 3       m_cumulativeAura
+    uint32    procChance;                                   // 4       m_procChance
+    uint32    procCharges;                                  // 5       m_procCharges
+    uint32    procFlags;                                    // 6       m_procTypeMask
 };
 
 // SpellAuraRestrictions.dbc/
 struct SpellAuraRestrictionsEntry
 {
     //uint32    Id;                                           // 0        m_ID
-    uint32    CasterAuraState;                              // 1       m_casterAuraState
-    uint32    TargetAuraState;                              // 2       m_targetAuraState
-    uint32    CasterAuraStateNot;                           // 3       m_excludeCasterAuraState
-    uint32    TargetAuraStateNot;                           // 4       m_excludeTargetAuraState
-    uint32    casterAuraSpell;                              // 5       m_casterAuraSpell
-    uint32    targetAuraSpell;                              // 6       m_targetAuraSpell
-    uint32    excludeCasterAuraSpell;                       // 7       m_excludeCasterAuraSpell
-    uint32    excludeTargetAuraSpell;                       // 8       m_excludeTargetAuraSpell
+    uint32    SpellId;                                      // 1       5.3.0
+    //uint32  unk;                                          // 2       5.3.0
+    uint32    CasterAuraState;                              // 3       m_casterAuraState
+    uint32    TargetAuraState;                              // 4       m_targetAuraState
+    uint32    CasterAuraStateNot;                           // 5       m_excludeCasterAuraState
+    uint32    TargetAuraStateNot;                           // 6       m_excludeTargetAuraState
+    uint32    casterAuraSpell;                              // 7       m_casterAuraSpell
+    uint32    targetAuraSpell;                              // 8       m_targetAuraSpell
+    uint32    excludeCasterAuraSpell;                       // 9       m_excludeCasterAuraSpell
+    uint32    excludeTargetAuraSpell;                       // 10      m_excludeTargetAuraSpell
 };
 
 // SpellCastingRequirements.dbc
@@ -1892,19 +1896,23 @@ struct SpellRangeEntry
 // SpellEquippedItems.dbc
 struct SpellEquippedItemsEntry
 {
-    //uint32    Id;                                           // 0        m_ID
-    int32     EquippedItemClass;                            // 70       m_equippedItemClass (value)
-    int32     EquippedItemInventoryTypeMask;                // 72       m_equippedItemInvTypes (mask)
-    int32     EquippedItemSubClassMask;                     // 71       m_equippedItemSubclass (mask)
+    //uint32  Id;                                           // 0        m_ID
+    uint32    SpellId;                                      // 1        5.3.0
+    //uint32  unk;                                          // 2        5.3.0
+    int32     EquippedItemClass;                            // 3        m_equippedItemClass (value)
+    int32     EquippedItemInventoryTypeMask;                // 4        m_equippedItemInvTypes (mask)
+    int32     EquippedItemSubClassMask;                     // 5        m_equippedItemSubclass (mask)
 };
 
 // SpellCooldowns.dbc
 struct SpellCooldownsEntry
 {
     //uint32    Id;                                           // 0        m_ID
-    uint32    CategoryRecoveryTime;                         // 31       m_categoryRecoveryTime
-    uint32    RecoveryTime;                                 // 30       m_recoveryTime
-    uint32    StartRecoveryTime;                            // 146      m_startRecoveryTime
+    uint32    SpellId;                                      // 1        5.3.0
+    //uint32  unk;                                          // 2        5.3.0
+    uint32    CategoryRecoveryTime;                         // 3        m_categoryRecoveryTime
+    uint32    RecoveryTime;                                 // 4        m_recoveryTime
+    uint32    StartRecoveryTime;                            // 5        m_startRecoveryTime
 };
 
 // SpellClassOptions.dbc
@@ -1920,7 +1928,9 @@ struct SpellClassOptionsEntry
 // SpellInterrupts.dbc
 struct SpellInterruptsEntry
 {
-    //uint32    Id;                                           // 0        m_ID
+    //uint32    Id;                                         // 0       m_ID
+    uint32    SpellId;                                      // 1       5.3.0
+    //uint32  unk;                                          // 2       5.3.0
     uint32    AuraInterruptFlags;                           // 1       m_auraInterruptFlags
     //uint32                                                // 2       4.0.0
     uint32    ChannelInterruptFlags;                        // 3       m_channelInterruptFlags
@@ -1931,10 +1941,12 @@ struct SpellInterruptsEntry
 // SpellLevels.dbc
 struct SpellLevelsEntry
 {
-    //uint32    Id;                                           // 0        m_ID
-    uint32    baseLevel;                                    // 1       m_baseLevel
-    uint32    maxLevel;                                     // 2       m_maxLevel
-    uint32    spellLevel;                                   // 3       m_spellLevel
+    //uint32    Id;                                         // 0       m_ID
+    uint32    SpellId;                                      // 1       5.3.0
+    //uint32  unk;                                          // 2       5.3.0
+    uint32    baseLevel;                                    // 3       m_baseLevel
+    uint32    maxLevel;                                     // 4       m_maxLevel
+    uint32    spellLevel;                                   // 5       m_spellLevel
 };
 
 // SpellPower.dbc
@@ -2014,11 +2026,11 @@ struct SpellTargetRestrictionsEntry
 // SpellReagents.dbc
 struct SpellReagentsEntry
 {
-    //uint32    Id;                                           // 0        m_ID
-    //uint32    SpellId;                                      // 1        m_SpellId        5.3.0
+    uint32    Id;                                             // 0        m_ID
+    uint32    SpellId;                                        // 1        m_SpellId        5.3.0
     //unk                                                     // 2
-    int32     Reagent[MAX_SPELL_REAGENTS];                    // 54-61    m_reagent        5.3.0
-    uint32    ReagentCount[MAX_SPELL_REAGENTS];               // 62-69    m_reagentCount   5.3.0
+    int32     Reagent[MAX_SPELL_REAGENTS];                    // 3-11     m_reagent        5.3.0
+    uint32    ReagentCount[MAX_SPELL_REAGENTS];               // 11-18    m_reagentCount   5.3.0
 };
 
 // SpellScaling.dbc
