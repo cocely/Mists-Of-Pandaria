@@ -32,24 +32,28 @@ void WorldSession::SendAuthResponse(uint8 code, bool queued, uint32 queuePos)
     
     
     WorldPacket packet(SMSG_AUTH_RESPONSE, 1 + 4 + 1 + 4 + 1 + 4 + 1 + 1 + (queued ? 4 : 0));
-    packet << uint8(code);
-    packet.WriteBit(queued);
-    packet.WriteBit(1);
+    packet.WriteBit(0);
 
-    packet.WriteBits(0, 21);
+    packet.WriteBit(1);
+    packet.WriteBit(0);
+    packet.WriteBit(0);
     packet.WriteBits(result2->GetRowCount(), 23);
     packet.WriteBit(0);
+    packet.WriteBits(0, 21);
     packet.WriteBits(result->GetRowCount(), 23);
+    packet.WriteBits(0, 22);
     packet.WriteBit(0);
 
     packet.FlushBits();
+
+    packet << uint8(0);
 
     do
     {
         Field* fields = result->Fetch();
 
-        packet << fields[0].GetUInt8();
         packet << fields[1].GetUInt8();
+        packet << fields[0].GetUInt8();
     }while(result->NextRow());
 
     do
@@ -60,12 +64,12 @@ void WorldSession::SendAuthResponse(uint8 code, bool queued, uint32 queuePos)
         packet << fields[0].GetUInt8();
     }while(result2->NextRow());
 
+    packet << uint32(0);
+    packet << uint32(0);
+    packet << uint32(0);
     packet << uint8(Expansion());
     packet << uint8(Expansion());
-    packet << uint8(0);
-    packet << uint32(0);
-    packet << uint32(0);
-    packet << uint32(0);
+    packet << uint8(code);
 
     SendPacket(&packet);
 }

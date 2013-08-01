@@ -446,7 +446,7 @@ enum Opcodes
     CMSG_QUEST_POI_QUERY                              = 0x4037,
     CMSG_QUEST_QUERY                                  = 0x0D06,
     CMSG_RANDOMIZE_CHAR_NAME                          = 0x2413,
-    CMSG_READY_FOR_ACCOUNT_DATA_TIMES                 = 0x2B16,
+    CMSG_READY_FOR_ACCOUNT_DATA_TIMES                 = 0x0755,
     CMSG_READ_ITEM                                    = 0x2F16,
     CMSG_REALM_SPLIT                                  = 0x0B48,
     CMSG_RECLAIM_CORPSE                               = 0x4036,

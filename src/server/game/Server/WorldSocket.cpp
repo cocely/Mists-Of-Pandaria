@@ -494,12 +494,12 @@ int WorldSocket::handle_input_header (void)
 
         uint32 val = *(uint32*)authHeader;
         uint32 opcode = val & 0x1FFF;
-        uint16 size = (uint16)((val & ~(uint32)0xFFF) >> 13);
+        uint16 size = (uint16)(val >> 13);
 
         header.size = size + 4;
         header.cmd = opcode;
 
-        if ((header.size < 4) || (header.size > 20240) || (header.cmd >= 0xFFFF))
+        if ((header.size < 4) || (header.size > 20240) || (header.cmd >= 20240))
         {
             TC_LOG_ERROR(LOG_FILTER_GENERAL, "WorldSocket::handle_input_header - Client sent invalid packet size");
             errno = EINVAL;
