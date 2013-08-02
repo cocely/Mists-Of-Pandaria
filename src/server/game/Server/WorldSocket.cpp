@@ -499,7 +499,7 @@ int WorldSocket::handle_input_header (void)
         header.size = size + 4;
         header.cmd = opcode;
 
-        if ((header.size < 4) || (header.size > 20240) || (header.cmd >= 20240))
+        if ((header.size < 4) || (header.size > 20240))
         {
             TC_LOG_ERROR(LOG_FILTER_GENERAL, "WorldSocket::handle_input_header - Client sent invalid packet size");
             errno = EINVAL;
@@ -526,7 +526,7 @@ int WorldSocket::handle_input_header (void)
         EndianConvert(header.size);
         EndianConvert(header.cmd);
 
-        if ((header.size < 4) || (header.size > 10240) || (header.cmd >= 0xFFFF && header.cmd != 0x4C524F57))
+        if ((header.size < 4) || (header.size > 20240))
         {
             TC_LOG_ERROR(LOG_FILTER_GENERAL, "WorldSocket::handle_input_header - Client sent invalid packet size");
             errno = EINVAL;
