@@ -177,7 +177,7 @@ enum Opcodes
     CMSG_CONNECT_TO_FAILED                            = 0x2533,
     CMSG_CONTACT_LIST                                 = 0x4534,
     CMSG_CORPSE_MAP_POSITION_QUERY                    = 0x6205,
-    CMSG_CREATURE_QUERY                               = 0x2706,
+    CMSG_CREATURE_QUERY                               = 0x050F, //17128
     CMSG_DANCE_QUERY                                  = 0x4E07,
     CMSG_DECLINE_CHANNEL_INVITE                       = 0x0000,
     CMSG_DELETEEQUIPMENT_SET                          = 0x4D07,
@@ -199,7 +199,7 @@ enum Opcodes
     CMSG_FAR_SIGHT                                    = 0x4835,
     CMSG_FORCE_MOVE_ROOT_ACK                          = 0x701E,
     CMSG_FORCE_MOVE_UNROOT_ACK                        = 0x7808,
-    CMSG_GAMEOBJECT_QUERY                             = 0x4017,
+    CMSG_GAMEOBJECT_QUERY                             = 0x058F, //17128
     CMSG_GAMEOBJ_REPORT_USE                           = 0x4827,
     CMSG_GAMEOBJ_USE                                  = 0x4E17,
     CMSG_GAMESPEED_SET                                = 0x0000,
@@ -317,7 +317,7 @@ enum Opcodes
     CMSG_LIST_INVENTORY                               = 0x2806,
     CMSG_LOAD_SCREEN                                  = 0x045D,
     CMSG_LOGOUT_CANCEL                                = 0x20E0,
-    CMSG_LOGOUT_REQUEST                               = 0x0359,
+    CMSG_LOGOUT_REQUEST                               = 0x1150, //17128
     CMSG_LOG_DISCONNECT                               = 0x09A2,
     CMSG_LOOT                                         = 0x0127,
     CMSG_LOOT_CURRENCY                                = 0x781C,
@@ -385,7 +385,7 @@ enum Opcodes
     CMSG_MOVE_WATER_WALK_ACK                          = 0x3B00,
     CMSG_NEW_SPELL_SLOT                               = 0x0000,
     CMSG_NEXT_CINEMATIC_CAMERA                        = 0x2014,
-    CMSG_NPC_TEXT_QUERY                               = 0x4E24,
+    CMSG_NPC_TEXT_QUERY                               = 0x009F, //17128
     CMSG_OBJECT_UPDATE_FAILED                         = 0x3808,
     CMSG_OBJECT_UPDATE_RESCUED                        = 0x3906,
     CMSG_OFFER_PETITION                               = 0x4817,
@@ -512,7 +512,7 @@ enum Opcodes
     CMSG_SET_PRIMARY_TALENT_TREE                      = 0x4524,
     CMSG_SET_RELATIVE_POSITION                        = 0x311A,
     CMSG_SET_SAVED_INSTANCE_EXTEND                    = 0x6706,
-    CMSG_SET_SELECTION                                = 0x0506,
+    CMSG_SET_SELECTION                                = 0x1759, //17128
     CMSG_SET_SKILL_CHEAT                              = 0x0000,
     CMSG_SET_TAXI_BENCHMARK_MODE                      = 0x4314,
     CMSG_SET_TITLE                                    = 0x2117,
@@ -656,17 +656,17 @@ enum Opcodes
     MSG_TABARDVENDOR_ACTIVATE                         = 0x6926,
     MSG_TALENT_WIPE_CONFIRM                           = 0x0107,
     MSG_VERIFY_CONNECTIVITY                           = 0x4F57,
-    SMSG_ACCOUNT_DATA_TIMES                           = 0x0CD1,
-    SMSG_ACCOUNT_INFO_RESPONSE                        = 0x10A7,
+    SMSG_ACCOUNT_DATA_TIMES                           = 0x0CD1, //17128 good !!!
+    SMSG_ACCOUNT_INFO_RESPONSE                        = 0x0FC9, //17128
     SMSG_ACCOUNT_RESTRICTED_WARNING                   = 0x51A7,
     SMSG_ACHIEVEMENT_DELETED                          = 0x6A16,
-    SMSG_ACHIEVEMENT_EARNED                           = 0x4405,
+    SMSG_ACHIEVEMENT_EARNED                           = 0x029D, //17128
     SMSG_ACTION_BUTTONS                               = 0x019C,
     SMSG_ACTIVATETAXIREPLY                            = 0x6A37,
     SMSG_ADDON_INFO                                   = 0x0C80,
     SMSG_ADD_RUNE_POWER                               = 0x6915,
     SMSG_AI_REACTION                                  = 0x0637,
-    SMSG_ALL_ACHIEVEMENT_DATA                         = 0x58B1,
+    SMSG_ALL_ACHIEVEMENT_DATA                         = 0x12D1, //17128
     SMSG_AREA_SPIRIT_HEALER_TIME                      = 0x0734,
     SMSG_AREA_TRIGGER_MESSAGE                         = 0x4505,
     SMSG_AREA_TRIGGER_MOVEMENT_UPDATE                 = 0x3DB1,
@@ -724,6 +724,21 @@ enum Opcodes
     SMSG_BATTLEGROUND_INFO_THROTTLED                  = 0x34B2,
     SMSG_BATTLEGROUND_PLAYER_JOINED                   = 0x50B0,
     SMSG_BATTLEGROUND_PLAYER_LEFT                     = 0x59A6,
+
+    //prepare to mop battle pet
+
+	/*
+	SMSG_BATTLE_PET_UPDATES                           = 0x14CC,
+	SMSG_BATTLE_PET_TRAP_LEVEL                        = 0x0A9D,
+	SMSG_BATTLE_PET_SLOT_UPDATE                       = 0x149D,
+	SMSG_BATTLE_PET_JOURNAL_LOCK_ACQUIRED             = 0x0DCD,
+	SMSG_BATTLE_PET_JOURNAL_LOCK_DENIED               = 0x01C8,
+	SMSG_BATTLE_PET_JOURNAL                           = 0x0AC0,
+	SMSG_BATTLE_PET_DELETE                            = 0x13D9,
+	SMSG_BATTLE_PET_HEALED                            = 0x10C4,
+	SMSG_BATTLE_PET_LICENCE_CHANGE                    = 0x1381,
+	*/
+
     SMSG_BINDER_CONFIRM                               = 0x2835,
     SMSG_BINDPOINTUPDATE                              = 0x0527,
     SMSG_BINDZONEREPLY                                = 0x0000,
@@ -758,6 +773,17 @@ enum Opcodes
     SMSG_CANCEL_AUTO_REPEAT                           = 0x6436,
     SMSG_CANCEL_COMBAT                                = 0x4F04,
     SMSG_CAST_FAILED                                  = 0x4D16,
+
+	//prepare to mop challenge
+	/*
+	SMSG_CHALLENGE_MODE_COMPLETE                      = 0x0EC8,
+	SMSG_CHALLENGE_MODE_REWARDS                       = 0x0AD8,
+	SMSG_CHALLENGE_MODE_ALL_MAP_STATS                 = 0x0784,
+	SMSG_CHALLENGE_MODE_MAP_STATS_UPDATE              = 0x1098,
+	SMSG_CHALLENGE_MODE_REQUEST_LEADERS               = 0x03D4,  
+	SMSG_CHALLENGE_MODE_NEW_PLAYER_RECORD             = 0x07C9,
+	*/
+
     SMSG_CHANNEL_LIST                                 = 0x2214,
     SMSG_CHANNEL_MEMBER_COUNT                         = 0x6414,
     SMSG_CHANNEL_NOTIFY                               = 0x0825,
@@ -814,7 +840,7 @@ enum Opcodes
     SMSG_DAMAGE_CALC_LOG                              = 0x2436,
     SMSG_DAMAGE_DONE_OBSOLETE                         = 0x0000,
     SMSG_DANCE_QUERY_RESPONSE                         = 0x2F06,
-    SMSG_DB_REPLY                                     = 0x0411,
+    SMSG_DB_REPLY                                     = 0x00DC, //17128
     SMSG_DEATH_RELEASE_LOC                            = 0x2F07,
     SMSG_DEBUG_RUNE_REGEN                             = 0x31B3,
     SMSG_DEFENSE_MESSAGE                              = 0x0314,
@@ -847,7 +873,7 @@ enum Opcodes
     SMSG_EXPECTED_SPAM_RECORDS                        = 0x4D36,
     SMSG_EXPLORATION_EXPERIENCE                       = 0x6716,
     SMSG_FAILED_PLAYER_CONDITION                      = 0x19A4,
-    SMSG_FEATURE_SYSTEM_STATUS                        = 0x3DB7,
+    SMSG_FEATURE_SYSTEM_STATUS                        = 0x15D1, //17128
     SMSG_FEIGN_DEATH_RESISTED                         = 0x0D05,
     SMSG_FISH_ESCAPED                                 = 0x2205,
     SMSG_FISH_NOT_HOOKED                              = 0x0A17,
@@ -946,8 +972,8 @@ enum Opcodes
     SMSG_GUILD_XP_UPDATE                              = 0x0000,
     SMSG_HEALTH_UPDATE                                = 0x4734,
     SMSG_HIGHEST_THREAT_UPDATE                        = 0x4104,
-    SMSG_HOTFIX_INFO                                  = 0x19B5,
-    SMSG_HOTFIX_NOTIFY                                = 0x55A7,
+    SMSG_HOTFIX_INFO                                  = 0x1584, //17128 ???
+    SMSG_HOTFIX_NOTIFY                                = 0x0EDC, //17128
     SMSG_INITIALIZE_FACTIONS                          = 0x4634,
     SMSG_INITIAL_SPELLS                               = 0x0104,
     SMSG_INIT_CURRENCY                                = 0x15A5,
@@ -1007,7 +1033,7 @@ enum Opcodes
     SMSG_LF_GUILD_POST_UPDATED                        = 0x35B7,
     SMSG_LF_GUILD_RECRUIT_LIST_UPDATED                = 0x1CB2,
     SMSG_LIST_INVENTORY                               = 0x7CB0,
-    SMSG_LOAD_CUF_PROFILES                            = 0x50B1,
+    SMSG_LOAD_CUF_PROFILES                            = 0x09CC, //17128
     SMSG_LOGIN_SETTIMESPEED                           = 0x07F5,
     SMSG_LOGIN_VERIFY_WORLD                           = 0x0B6C,
     SMSG_LOGOUT_CANCEL_ACK                            = 0x0175,
@@ -1113,6 +1139,22 @@ enum Opcodes
     SMSG_PARTY_MEMBER_STATS_FULL                      = 0x0215,
     SMSG_PAUSE_MIRROR_TIMER                           = 0x4015,
     SMSG_PERIODICAURALOG                              = 0x0416,
+
+	//prepare to mop battle pet 2
+	/*
+	SMSG_PET_BATTLE_REQUEST_FAILED                    = 0x118C,
+	SMSG_PET_BATTLE_PVP_CHALLENGE                     = 0x0FC0,
+	SMSG_PET_BATTLE_LOCATION_FINALIZE                 = 0x1280,
+	SMSG_PET_BATTLE_UPDATE_FULL                       = 0x0189,
+	SMSG_PET_BATTLE_FIRST_ROUND                       = 0x1290,
+	SMSG_PET_BATTLE_ROUND_RESULT                      = 0x0FC8,
+	SMSG_PET_BATTLE_REPLACEMENT_MADE                  = 0x0C91,
+	SMSG_PET_BATTLE_FINAL_ROUND                       = 0x06CC,
+	SMSG_PET_BATTLE_FINISHED                          = 0x0CCC,
+	SMSG_PET_BATTLE_CHAT_RESTRICTED                   = 0x01DD,
+	SMSG_PET_BATTLE_MAX_GAME_LENGHT_WARNING           = 0x04C8
+	*/
+
     SMSG_PETGODMODE                                   = 0x2E36,
     SMSG_PETITION_ALREADY_SIGNED                      = 0x5DA3,
     SMSG_PETITION_QUERY_RESPONSE                      = 0x4B37,
@@ -1126,11 +1168,11 @@ enum Opcodes
     SMSG_PET_CAST_FAILED                              = 0x2B15,
     SMSG_PET_DISMISS_SOUND                            = 0x2B05,
     SMSG_PET_GUIDS                                    = 0x2D26,
-    SMSG_PET_LEARNED_SPELL                            = 0x0507,
+    SMSG_PET_LEARNED_SPELL                            = 0x1594, //17128
     SMSG_PET_MODE                                     = 0x2235,
     SMSG_PET_NAME_INVALID                             = 0x6007,
     SMSG_PET_NAME_QUERY_RESPONSE                      = 0x4C37,
-    SMSG_PET_REMOVED_SPELL                            = 0x6A04,
+    SMSG_PET_REMOVED_SPELL                            = 0x0F9D, //17128
     SMSG_PET_RENAMEABLE                               = 0x2B27,
     SMSG_PET_SLOT_UPDATED                             = 0x51A3,
     SMSG_PET_SPELLS                                   = 0x4114,
@@ -1190,7 +1232,7 @@ enum Opcodes
     SMSG_RAID_MARKERS_CHANGED                         = 0x10A1,
     SMSG_RAID_READY_CHECK_THROTTLED_ERROR             = 0x2607,
     SMSG_RAID_SUMMON_FAILED                           = 0x18B6,
-    SMSG_RANDOMIZE_CHAR_NAME                          = 0x091D,
+    SMSG_RANDOMIZE_CHAR_NAME                          = 0x0AD9, //17128
     SMSG_RATED_BG_RATING                              = 0x15A1,
     SMSG_RATED_BG_STATS                               = 0x34A1,
     SMSG_READ_ITEM_FAILED                             = 0x0F16,
@@ -1203,7 +1245,7 @@ enum Opcodes
     SMSG_REFER_A_FRIEND_EXPIRED                       = 0x4934,
     SMSG_REFER_A_FRIEND_FAILURE                       = 0x2037,
     SMSG_REFORGE_RESULT                               = 0x58A4,
-    SMSG_REMOVED_SPELL                                = 0x4804,
+    SMSG_REMOVED_SPELL                                = 0x02D9, //17128
     SMSG_REPORT_PVP_AFK_RESULT                        = 0x2D06,
     SMSG_REQUEST_CEMETERY_LIST_RESPONSE               = 0x30A7,
     SMSG_REQUEST_PVP_REWARDS_RESPONSE                 = 0x5DA4,
@@ -1218,11 +1260,17 @@ enum Opcodes
     SMSG_ROLE_POLL_BEGIN                              = 0x70B0,
     SMSG_RWHOIS                                       = 0x2437,
     SMSG_SELL_ITEM                                    = 0x6105,
+	/*
+	//prepare to mop scenario
+	SMSG_SCENARIO_STATE                               = 0x009C,
+	SMSG_SCENARIO_POIS                                = 0x0C88,
+	SMSG_SCENARIO_PROGRESS_UPDATE                     = 0x0295,
+	*/
     SMSG_SEND_MAIL_RESULT                             = 0x4927,
     SMSG_SEND_UNLEARN_SPELLS                          = 0x4E25,
-    SMSG_SERVERTIME                                   = 0x6327,
+    SMSG_SERVERTIME                                   = 0x0789, //17128
     SMSG_SERVER_FIRST_ACHIEVEMENT                     = 0x6424,
-    SMSG_SERVER_INFO_RESPONSE                         = 0x74B5,
+    SMSG_SERVER_INFO_RESPONSE                         = 0x0ED4, //17128
     SMSG_SERVER_MESSAGE                               = 0x6C04,
     SMSG_SERVER_PERF                                  = 0x74B6,
     SMSG_SET_AI_ANIM_KIT                              = 0x0000,
@@ -1317,8 +1365,8 @@ enum Opcodes
     SMSG_THREAT_CLEAR                                 = 0x6437,
     SMSG_THREAT_REMOVE                                = 0x2E05,
     SMSG_THREAT_UPDATE                                = 0x4735,
-    SMSG_TIME_ADJUSTMENT                              = 0x159C,
-    SMSG_TIME_SYNC_REQ                                = 0x0AD4,
+    SMSG_TIME_ADJUSTMENT                              = 0x159C, //17128
+    SMSG_TIME_SYNC_REQ                                = 0x0AD4, //17128
     SMSG_TITLE_EARNED                                 = 0x2426,
     SMSG_TOGGLE_XP_GAIN                               = 0x6704,
     SMSG_TOTEM_CREATED                                = 0x2414,
@@ -1338,15 +1386,15 @@ enum Opcodes
     SMSG_UPDATE_ACCOUNT_DATA                          = 0x06E0,
     SMSG_UPDATE_ACCOUNT_DATA_COMPLETE                 = 0x0548,
     SMSG_UPDATE_COMBO_POINTS                          = 0x6B34,
-    SMSG_UPDATE_CURRENCY                              = 0x59B0,
+    SMSG_UPDATE_CURRENCY                              = 0x1595, //17128
     SMSG_UPDATE_CURRENCY_WEEK_LIMIT                   = 0x70A7,
     SMSG_UPDATE_DUNGEON_ENCOUNTER_FOR_LOOT            = 0x3CB5,
     SMSG_UPDATE_INSTANCE_ENCOUNTER_UNIT               = 0x4007,
     SMSG_UPDATE_INSTANCE_OWNERSHIP                    = 0x4915,
     SMSG_UPDATE_LAST_INSTANCE                         = 0x0437,
     SMSG_UPDATE_OBJECT                                = 0x0C65,
-    SMSG_UPDATE_SERVER_PLAYER_POSITION                = 0x1044,
-    SMSG_UPDATE_WORLD_STATE                           = 0x0065,
+    SMSG_UPDATE_SERVER_PLAYER_POSITION                = 0x0E84, //17128
+    SMSG_UPDATE_WORLD_STATE                           = 0x13C8, //17128
     SMSG_USERLIST_ADD                                 = 0x0F37,
     SMSG_USERLIST_REMOVE                              = 0x2006,
     SMSG_USERLIST_UPDATE                              = 0x0135,
@@ -1373,7 +1421,7 @@ enum Opcodes
     SMSG_WEEKLY_SPELL_USAGE_UPDATE                    = 0x11B5,
     SMSG_WHO                                          = 0x1151,
     SMSG_WHOIS                                        = 0x04D1,
-    SMSG_WORLD_SERVER_INFO                            = 0x31A2,
+    SMSG_WORLD_SERVER_INFO                            = 0x1091, //17128
     SMSG_WORLD_STATE_UI_TIMER_UPDATE                  = 0x4A14,
     SMSG_XP_GAIN_ABORTED                              = 0x50B4,
     SMSG_ZONE_UNDER_ATTACK                            = 0x0A06,
