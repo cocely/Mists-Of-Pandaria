@@ -175,7 +175,10 @@ LanguageDesc lang_description[LANGUAGES_COUNT] =
     { LANG_GNOMISH_BINARY,  0, 0                       },
     { LANG_GOBLIN_BINARY,   0, 0                       },
     { LANG_WORGEN,      69270, SKILL_LANG_WORGEN       },
-    { LANG_GOBLIN,      69269, SKILL_LANG_GOBLIN       }
+    { LANG_GOBLIN,      69269, SKILL_LANG_GOBLIN       },
+    { LANG_PANDAREN,    108127, SKILL_LANG_PANDAREN_NEUTRAL },
+    { LANG_PANDAREN_ALLY, 108130, SKILL_LANG_PANDAREN_ALLIANCE },
+    { LAND_PANDAREN_HORDE, 108131, SKILL_LANG_PANDAREN_HORDE },
 };
 
 LanguageDesc const* GetLanguageDescByID(uint32 lang)
@@ -3505,6 +3508,8 @@ void ObjectMgr::BuildPlayerLevelInfo(uint8 race, uint8 _class, uint8 level, Play
                 info->stats[STAT_AGILITY]   += (lvl > 9 && !(lvl%2) ? 1: 0);
                 info->stats[STAT_INTELLECT] += (lvl > 33 ? 2: (lvl > 2 ? 1: 0));
                 info->stats[STAT_SPIRIT]    += (lvl > 38 ? 2: (lvl > 3 ? 1: 0));
+                break;
+            case CLASS_MONK:
                 break;
             case CLASS_DRUID:
                 info->stats[STAT_STRENGTH]  += (lvl > 38 ? 2: (lvl > 6 && (lvl%2) ? 1: 0));
