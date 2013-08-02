@@ -762,8 +762,8 @@ enum Language
     LANG_GOBLIN         = 40,
     LANG_PANDAREN       = 42,
     LANG_PANDAREN_ALLY  = 43,
-    LAND_PANDAREN_HORDE = 44,
-    LAND_UNK            = 168,
+    LANG_PANDAREN_HORDE = 44,
+    LANG_UNK            = 168,
     LANG_ADDON          = 0xFFFFFFFF                        // used by addons, in 2.4.0 not exist, replaced by messagetype?
 };
 
