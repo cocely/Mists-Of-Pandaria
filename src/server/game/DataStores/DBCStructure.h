@@ -1742,13 +1742,13 @@ struct SpellEffectEntry
     uint32    EffectRadiusMaxIndex;                         // 17        4.0.0
     float     EffectRealPointsPerLevel;                     // 18        m_effectRealPointsPerLevel
     flag96    EffectSpellClassMask;                         // 19 20 21  m_effectSpellClassMask1(2/3), effect 0
-    uint32    EffectTriggerSpell;                           // 22        m_effectTriggerSpell
-    uint32    EffectImplicitTargetA;                        // 23        m_implicitTargetA
-    uint32    EffectImplicitTargetB;                        // 24        m_implicitTargetB
-    uint32    EffectSpellId;                                // 25        new 4.0.0
-    uint32    EffectIndex;                                  // 26        new 4.0.0
-    //uint32  Unk1                                          // 27        4.2.0 only 0 or 1
-    uint32    SpellId;                                      // 28        5.3.0
+    //uint32  Unk2;                                         // 22        5.3.0
+    uint32    EffectTriggerSpell;                           // 23        m_effectTriggerSpell
+    float     Unk;                                          // 24        5.3.0
+    uint32    EffectImplicitTargetA;                        // 25        m_implicitTargetA     5.3.0
+    uint32    EffectImplicitTargetB;                        // 26        m_implicitTargetB     5.3.0
+    uint32    EffectSpellId;                                // 27        5.3.0
+    uint32    EffectIndex;                                  // 28        5.3.0
     //uint32  unk3                                          // 29        5.3.0
 };
 
