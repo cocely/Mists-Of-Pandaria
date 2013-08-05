@@ -173,8 +173,6 @@ int WorldSocket::SendPacket(WorldPacket const& pct)
 
     if (m_Session)
         TC_LOG_ERROR(LOG_FILTER_GENERAL, "S->C: %s %s", m_Session->GetPlayerInfo().c_str(), GetOpcodeNameForLogging(pkt->GetOpcode()).c_str());
-    else
-        TC_LOG_ERROR(LOG_FILTER_GENERAL, "S->C: %s", GetOpcodeNameForLogging(pkt->GetOpcode()).c_str());
 
     sScriptMgr->OnPacketSend(this, *pkt);
 
@@ -494,12 +492,12 @@ int WorldSocket::handle_input_header (void)
 
         uint32 val = *(uint32*)authHeader;
         uint32 opcode = val & 0x1FFF;
-        uint16 size = (uint16)(val >> 13);
+        uint16 size = (uint16)((val & ~(uint32)0xFFF) >> 13);
 
         header.size = size + 4;
         header.cmd = opcode;
 
-        if ((header.size < 4) || (header.size > 20240))
+        if ((header.size < 4) || (header.size > 20240) || (header.cmd >= 0xFFFF))
         {
             TC_LOG_ERROR(LOG_FILTER_GENERAL, "WorldSocket::handle_input_header - Client sent invalid packet size");
             errno = EINVAL;
@@ -526,7 +524,7 @@ int WorldSocket::handle_input_header (void)
         EndianConvert(header.size);
         EndianConvert(header.cmd);
 
-        if ((header.size < 4) || (header.size > 20240))
+        if ((header.size < 4) || (header.size > 10240) || (header.cmd >= 0xFFFF && header.cmd != 0x4C524F57))
         {
             TC_LOG_ERROR(LOG_FILTER_GENERAL, "WorldSocket::handle_input_header - Client sent invalid packet size");
             errno = EINVAL;
@@ -768,8 +766,6 @@ int WorldSocket::ProcessIncoming(WorldPacket* new_pct)
     std::string opcodeName = GetOpcodeNameForLogging(opcode);
     if (m_Session)
         TC_LOG_ERROR(LOG_FILTER_GENERAL, "C->S: %s %s", m_Session->GetPlayerInfo().c_str(), opcodeName.c_str());
-    else
-        TC_LOG_ERROR(LOG_FILTER_GENERAL, "C->S: %s", opcodeName.c_str());
 
     try
     {
@@ -870,7 +866,6 @@ int WorldSocket::HandleSendAuthSession()
     packet.append(seed2.AsByteArray(16), 16);               // new encryption seeds
 
     packet << m_Seed;
-    packet << uint8(1);
     return SendPacket(packet);
 }
 
@@ -1086,7 +1081,7 @@ int WorldSocket::HandleAuthSession(WorldPacket& recvPacket)
     m_Session->LoadGlobalAccountData();
     m_Session->LoadTutorialsData();
     m_Session->ReadAddonsInfo(addonsData);
-    //m_Session->LoadPermissions();
+    m_Session->LoadPermissions();
 
     // Initialize Warden system only if it is enabled by config
     if (sWorld->getBoolConfig(CONFIG_WARDEN_ENABLED))
