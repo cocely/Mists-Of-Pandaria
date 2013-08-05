@@ -769,10 +769,10 @@ void WorldSession::SendAccountDataTimes(uint32 mask)
     for (uint32 i = 0; i < NUM_ACCOUNT_DATA_TYPES; ++i)
         if (mask & (1 << i))
             data << uint32(GetAccountData(AccountDataType(i))->Time); // also unix time
-    
+
     data << uint32(mask);
     data << uint8(0);
-    
+
     data.WriteBit(0);
     data.FlushBits();
     sLog->outError(LOG_FILTER_GENERAL, "%d", data.size());
